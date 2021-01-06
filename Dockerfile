@@ -7,7 +7,8 @@ RUN apt install -y proguard
 
 WORKDIR /workdir
 
-COPY workdir /workdir
+COPY workdir/start.sh /workdir/start.sh
+COPY workdir/proguard.cfg /workdir/proguard.cfg
 
 RUN chmod 755 /workdir/start.sh
 
