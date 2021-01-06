@@ -1,0 +1,7 @@
+version: '3'
+services:
+  proguard:
+    build: .
+    container_name: proguard
+    volumes:
+      - ./workdir:/workdir
