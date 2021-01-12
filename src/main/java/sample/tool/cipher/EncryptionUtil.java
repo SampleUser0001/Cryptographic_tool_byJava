@@ -3,24 +3,24 @@ package sample.tool.cipher;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+
 /**
- * 暗号化サンプル
+ * 暗号化クラスの実装
  */
-public class ExecuteCipher {
+public class EncryptionUtil{
     public static final String CHARSET = "Shift_JIS";
     public static final String ALGORITHM = "AES";
-    
-    public static void encrypt( String[] args ) throws Exception{
-        String keyString = "0123456789abcdef0123456789abcdef";
-        String plainTextString = args[1];
-        
+
+    /**
+     * AESで暗号化する。
+     */
+    public static String encrypt(String keyString, String plainTextString) throws Exception{
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         byte[] plainTextBytes = plainTextString.getBytes(CHARSET);
         byte[] keyBytes = toBytes(keyString);
         
         cipher.init(1, new SecretKeySpec(keyBytes, ALGORITHM));
-        System.out.println(toHexString(cipher.doFinal(plainTextBytes)));
-        
+        return toHexString(cipher.doFinal(plainTextBytes));
     }
 
     private static byte[] toBytes(String hexString){
@@ -46,4 +46,5 @@ public class ExecuteCipher {
         }
         return builder.toString();
     }
+    
 }
