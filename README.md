@@ -117,7 +117,7 @@ C:\Users\NITUser\Desktop>SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies_obf.e
 516699c161e25bb692723f3e0e23dfba
 ```
 
-暗号化キー指定なし
+暗号化キー指定あり
 ```
 C:\Users\NITUser\Desktop>SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies_obf.exe <16進数32桁の値> hogehoge
 507be06e5ee3f8f42e69fe94dbfd3a57
