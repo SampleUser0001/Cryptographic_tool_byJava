@@ -104,3 +104,7 @@ keyを指定しない。
 ```
 java -cp SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies_obf.jar sample.tool.cipher.SampleCipher hogehoge
 ```
+
+## exewrap
+
+[窓の杜:JAR形式のJavaアプリをEXE形式へ変換して扱い易くする「exewrap」](https://forest.watch.impress.co.jp/docs/review/1078991.html)
