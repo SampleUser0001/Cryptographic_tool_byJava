@@ -12,4 +12,4 @@ COPY workdir/proguard.cfg /workdir/proguard.cfg
 
 RUN chmod 755 /workdir/start.sh
 
-CMD [ "/workdir/start.sh" ]
+# CMD [ "/workdir/start.sh" ]

@@ -1,0 +1,11 @@
+version: '3'
+services:
+  create_runtime:
+    build:
+      context: ${pwd}
+      dockerfile: DockerfileCreateRuntime
+    container_name: createRuntime
+    volumes:
+      - ./createRuntime:/createRuntime
+#    tty: true
+    command: [sh, /createRuntime/createRuntime.sh ]

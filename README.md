@@ -122,3 +122,20 @@ C:\Users\NITUser\Desktop>SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies_obf.e
 C:\Users\NITUser\Desktop>SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies_obf.exe <16進数32桁の値> hogehoge
 507be06e5ee3f8f42e69fe94dbfd3a57
 ```
+
+## 実行環境を配布する
+
+### 
+
+```
+mvn clean compile package
+cp target/SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar createRuntime/
+docker-compose -f docker-compose_createRuntime.yml up 
+
+cd createRuntime
+zip -r jre-min.zip jre-min/
+```
+
+### 参考
+
+- [Tech blog:アプリケーション配布用に小さなJREを作る](https://blogs.osdn.jp/2018/03/26/jre-minimize.html)

@@ -5,3 +5,4 @@ services:
     container_name: proguard
     volumes:
       - ./workdir:/workdir
+    tty: true

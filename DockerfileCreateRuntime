@@ -1,0 +1,16 @@
+#FROM openjdk:11.0.9.1-jdk-buster
+FROM openjdk:11-windowsservercore-1803
+
+USER root
+
+# RUN apt -y update && apt -y upgrade && apt -y autoremove
+
+WORKDIR /createRuntime
+
+COPY ./createRuntime /createRuntime
+
+# COPY ./target/SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar /createRuntime/SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar
+
+RUN chmod 755 /createRuntime/createRuntime.sh
+
+# CMD [ "/workdir/start.sh" ]
