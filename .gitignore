@@ -27,3 +27,6 @@ hs_err_pid*
 
 # jd-cli
 /decompile/
+
+# runtime
+!/createRuntime/jre-min.zip
