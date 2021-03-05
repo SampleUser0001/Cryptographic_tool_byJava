@@ -1,57 +1,103 @@
 # Cryptographic_tool_byJava
+
 暗号化ツール（Java版）  
 ProGuardを使って暗号化ツールを暗号化したい。
 
 ## 実行
 
-### 暗号化キー指定
-```
-mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.SampleCipher" -Dexec.args="'<暗号化キー>' '<平文>'"
+### 暗号化
+
+#### 暗号化キー指定
+
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.encryption.EncrypterMain" -Dexec.args="'<暗号化キー>' '<平文>'"
 ```
 
 #### 実行例
 
-```
-mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.SampleCipher" -Dexec.args="'0123456789abcdef0123456789abcdef' 'hogehoge'"
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.encryption.EncrypterMain" -Dexec.args="'0123456789abcdef0123456789abcdef' 'hogehoge'"
 ```
 
 実行結果
-```
+
+``` sh
 516699c161e25bb692723f3e0e23dfba
 ```
 
-### 内部の暗号化キーを使用
+#### 内部の暗号化キーを使用
 
-```
-mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.SampleCipher" -Dexec.args="'<平文>'"
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.encryption.EncrypterMain" -Dexec.args="'<平文>'"
 ```
 
 #### 実行例
 
-```
-mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.SampleCipher" -Dexec.args="hogehoge"
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.encryption.EncrypterMain" -Dexec.args="hogehoge"
 ```
 
 実行結果
-```
+
+``` sh
 516699c161e25bb692723f3e0e23dfba
+```
+
+## 復号
+
+#### 暗号化キー指定
+
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.decryption.DecrypterMain" -Dexec.args="'<暗号化キー>' '<暗号文>'"
+```
+
+#### 実行例
+
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.decryption.DecrypterMain" -Dexec.args="'0123456789abcdef0123456789abcdef' '516699c161e25bb692723f3e0e23dfba'"
+```
+
+実行結果
+
+```
+hogehoge
+```
+
+#### 内部の暗号化キーを使用
+
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.decryption.DecrypterMain" -Dexec.args="'暗号文'"
+```
+
+#### 実行例
+
+``` sh
+mvn clean compile exec:java -Dexec.mainClass="sample.tool.cipher.decryption.DecrypterMain" -Dexec.args="516699c161e25bb692723f3e0e23dfba"
+```
+
+実行結果
+
+```
+hogehoge
 ```
 
 ## jar生成
 
-```
+``` sh
 mvn clean compile package
 ```
 
 ### jar実行
 
 key指定する。
-```
+
+``` sh
 java -cp SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar sample.tool.cipher.SampleCipher 0123456789abcdef0123456789abcdef hogehoge
 ```
 
 key指定しない。
-```
+
+``` sh
 java -cp SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar sample.tool.cipher.SampleCipher hogehoge
 ```
 
@@ -59,7 +105,7 @@ java -cp SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar sample.tool.ciphe
 
 ProGuardを使う。cloud9に入れられなかったので、Dockerコンテナに入れる。
 
-```
+``` sh
 mkdir workdir
 cp target/SampleCipher-1.0.1-SNAPSHOT-jar-with-dependencies.jar workdir
 docker-compose build --force-rm

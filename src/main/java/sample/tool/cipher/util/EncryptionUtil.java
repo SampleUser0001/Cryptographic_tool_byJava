@@ -1,26 +1,43 @@
-package sample.tool.cipher;
+package sample.tool.cipher.util;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-
 /**
- * 暗号化クラスの実装
+ * 暗号化の実装
  */
-public class EncryptionUtil{
+public class EncryptionUtil {
+
     public static final String CHARSET = "Shift_JIS";
     public static final String ALGORITHM = "AES";
 
-    /**
-     * AESで暗号化する。
-     */
-    public static String encrypt(String keyString, String plainTextString) throws Exception{
+    private static final String INNNER_KEY = "0123456789abcdef0123456789abcdef";
+
+    public static String encrypt(String keyString, String plainTextString) throws Exception {
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         byte[] plainTextBytes = plainTextString.getBytes(CHARSET);
         byte[] keyBytes = toBytes(keyString);
         
         cipher.init(1, new SecretKeySpec(keyBytes, ALGORITHM));
         return toHexString(cipher.doFinal(plainTextBytes));
+    }
+
+    public static String encrypt(String plainTextString) throws Exception {
+        return encrypt(INNNER_KEY, plainTextString);
+    }
+
+    public static String decrypt(String keyString, String cryptedText) throws Exception {
+        Cipher cipher = Cipher.getInstance(ALGORITHM);
+        byte[] keyBytes = toBytes(keyString);
+        
+        cipher.init(2, new SecretKeySpec(keyBytes, ALGORITHM));
+        return new String(
+            cipher.doFinal(toBytes(cryptedText)),
+            CHARSET);
+    }
+
+    public static String decrypt(String cryptedText) throws Exception {
+        return decrypt(INNNER_KEY, cryptedText);
     }
 
     private static byte[] toBytes(String hexString){
@@ -45,6 +62,4 @@ public class EncryptionUtil{
             builder.append(Integer.toHexString(0xFF & byteArray[i]));
         }
         return builder.toString();
-    }
-    
-}
+    }}

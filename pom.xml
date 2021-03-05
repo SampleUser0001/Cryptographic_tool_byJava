@@ -13,7 +13,6 @@
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}</maven.compiler.source>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.mainClass>sample.tool.cipher.SampleCipher</project.mainClass>
   </properties>  
   
   <dependencies>
@@ -32,7 +31,6 @@
       <artifactId>exec-maven-plugin</artifactId>
       <version>1.2.1</version>
       <configuration>
-        <mainClass>${project.mainClass}</mainClass>
       </configuration>
     </plugin>
 
@@ -54,7 +52,6 @@
         </descriptorRefs>
         <archive>
           <manifest>
-            <mainClass>${project.mainClass}</mainClass>
           </manifest>
         </archive>
       </configuration>
